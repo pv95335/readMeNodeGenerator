@@ -2,7 +2,7 @@
   Read Me Generator
 
   ## Description
-  It Generates a Read Me
+  This projects was made in order to familiarize myself with Node.js. It uses inquirer to prompt the user to fillout the information in the Read Me as well as Node to run the program. This can be used to create standardized Read Me for repositories.
 
   ## Tabel of Contents
   * [Installation](#installation)
@@ -11,13 +11,13 @@
   * [License](#rights)
 
   ## Installation
-  YOu dont need ot install this
+  Installation is not yet implement and may not be for a time
 
   ## Usage
-  As a project for something
+  This will make writing a Read Me for github repositories much quicker and orderly.
 
   ## Contributors
-  Victor
+  Victor Paniagua
 
   ## License
   MIT
@@ -25,5 +25,5 @@
   ### Github Username
   pv95335
   ### Email Address
-  victor.a.paniagau.a@gmail.com
+  victor.a.paniagua.a@gmail.com
   

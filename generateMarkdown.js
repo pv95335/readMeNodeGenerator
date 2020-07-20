@@ -9,8 +9,8 @@ function generateMarkdown(data) {
   ## Tabel of Contents
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
-  * [License](#rights)
+  * [Contributors](#contributors)
+  * [License](#license)
 
   ## Installation
   ${data.install}
