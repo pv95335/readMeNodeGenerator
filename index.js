@@ -1,51 +1,11 @@
 const inquirer = require("inquirer");
-
-const generateReadMe = require("./generateMarkdown");
-
 var fs = require("fs");
+const generateReadMe = require("./generateMarkdown");
+const generateMarkdown = require("./generateMarkdown");
 
 // Ask the user questions to help generate a ReadMe
-const readMeInfo = () => {
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "github",
-      message: "What is your github username? (Required)",
-      validate: (nameInput) => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log("Please enter a valid github username!");
-          return false;
-        }
-      },
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your email address?",
-      validate: (nameInput) => {
-        if (nameInput) {
-          return true;
-        } else {
-          console.log("Please enter a valid email address!");
-          return false;
-        }
-      },
-    },
-  ]);
-};
 
-const promptProject = (projectData) => {
-  if (!projectData.projects) {
-    projectData.projects = [];
-  }
-
-  console.log(`
-    ==========
-    Add Project
-    ==========
-    `);
+const promptProject = () => {
   return inquirer.prompt([
     {
       type: "input",
@@ -130,27 +90,57 @@ const promptProject = (projectData) => {
         }
       },
     },
+    {
+      type: "input",
+      name: "github",
+      message: "What is your github username? (Required)",
+      validate: (nameInput) => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log("Please enter a valid github username!");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your email address?",
+      validate: (nameInput) => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log("Please enter a valid email address!");
+          return false;
+        }
+      },
+    },
   ]);
 };
 
 // function to write README file
-const writeFile = (projectData) => {
-  fs.writeFile("README.md", projectData, (err) => {
+const writeFile = (generateMarkdown) => {
+  fs.writeFile("README.md", generateMarkdown, (err) => {
     if (err) throw err;
     console.log("Saved");
   });
 };
 
 // function to initialize program
-function init() {}
+// function init() {
+//   inquirer.prompt(readMeInfo).then((response) => {
+//     writeFile("README.ms", generateMarkdown({ ...response }));
+//   });
+// }
+// init();
 
 // function call to initialize program
-readMeInfo()
-  .then(promptProject)
-  .then((projectData) => {
-    return generateReadMe(projectData);
+promptProject()
+  .then((generateMarkdown) => {
+    return generateReadMe(generateMarkdown);
   })
   .then((fileContent) => {
     console.log(fileContent);
-    return writeFile();
+    return writeFile(fileContent);
   });
